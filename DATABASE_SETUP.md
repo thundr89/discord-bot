@@ -154,7 +154,7 @@ mariadb -u root -p
         CREATE DATABASE discord_bot CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
         -- Felhasználó létrehozása a bot számára (a '%' jel miatt bárhonnan elérheti)
-        CREATE USER 'botuser'@'%' IDENTIFIED BY 'NagyonErosBotJelszo';
+        CREATE USER 'botuser'@'%' IDENTIFIED BY 'NagyonErosBotJelszo'; => 4We8UD8kiMkpxFf
 
         -- Jogosultságok megadása a felhasználónak a bot adatbázisához
         GRANT ALL PRIVILEGES ON discord_bot.* TO 'botuser'@'%';

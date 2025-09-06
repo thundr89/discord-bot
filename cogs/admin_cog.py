@@ -6,9 +6,17 @@ import database as db
 
 # Admin parancsok csoportja
 class AdminGroup(app_commands.Group):
+    """
+    Adminisztrációs parancsok csoportosítására szolgáló osztály.
+    A class for grouping administration commands.
+    """
     pass
 
 class AdminCog(commands.Cog):
+    """
+    Ez a Cog tartalmazza az összes adminisztrációs parancsot.
+    This Cog contains all administration-related commands.
+    """
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.db_pool = bot.db_pool
@@ -19,6 +27,10 @@ class AdminCog(commands.Cog):
     # --- TILTOTT SZAVAK KEZELÉSE ---
     @admin.command(name="add-bad-word", description="Új szó hozzáadása a tiltólistához.")
     async def add_bad_word(self, interaction: discord.Interaction, szo: str):
+        """
+        Hozzáad egy szót a szerver tiltólistájához.
+        Adds a word to the server's bad word list.
+        """
         word = szo.lower()
         success = await db.add_bad_word(self.db_pool, interaction.guild.id, word)
         if success:
@@ -28,6 +40,10 @@ class AdminCog(commands.Cog):
 
     @admin.command(name="remove-bad-word", description="Szó eltávolítása a tiltólistáról.")
     async def remove_bad_word(self, interaction: discord.Interaction, szo: str):
+        """
+        Eltávolít egy szót a szerver tiltólistájáról.
+        Removes a word from the server's bad word list.
+        """
         word = szo.lower()
         success = await db.remove_bad_word(self.db_pool, interaction.guild.id, word)
         if success:
